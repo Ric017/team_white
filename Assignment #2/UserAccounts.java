@@ -1,11 +1,8 @@
 /*
- * Consider the Account class you created in problem 1 above. Create a class named 
- * UserAccounts that defines an array of 8 accounts as an instance variable.  In the default 
- * constructor of this class, write a loop that creates 8 accounts with ids 0 through 7 and initial 
- * balance of $50 for each account. Store these accounts in the array.  When the program runs, it asks the use to enter a specific id. When the user enters a correct id, 
- * the system displays a menu as shown in the sample run below.  The menu options are self-
- * explanatory. Option 4 exits the main menu. So if option 4 was chosen, the system will prompt 
- * the use again to enter another id. This means that the system will keep running indefinitely.
+ * Assignment 2, Exercise 3
+ * 
+ * @author Team White
+ * @date 2024-02-03
  */
 import java.util.Scanner;
 

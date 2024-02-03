@@ -67,4 +67,13 @@ public class Car {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    /*
+     * Format the car's information as a string
+     * 
+     * @return String
+     */
+    public String toString() {
+        return "Year: " + this.year + "\nMake: " + this.make + "\nModel: " + this.model + "\nPrice: $" + this.price;
+    }
 }

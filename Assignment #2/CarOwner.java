@@ -82,4 +82,13 @@ public class CarOwner {
     public void removeCar(Car car) {
         this.cars.remove(car);
     }
+
+    /*
+     * Format the owner's information and list of cars as a string
+     * 
+     * @return String
+     */
+    public String toString() {
+        return "Name: " + this.name + "\nAddress: " + this.address + "\nCars: " + this.cars;
+    }
 }

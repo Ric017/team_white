@@ -1,0 +1,36 @@
+@startuml
+class Car {
+    - make: String
+    - model: String
+    - year: int
+    - price: double
+
+    + Car()
+    + Car(make: String, model: String, year: int, price: double)
+    + setPrice(price: double): void
+    + getMake(): String
+    + getModel(): String
+    + getYear(): int
+    + getPrice(): double
+    + toString(): String
+}
+
+class CarOwner {
+    - name: String
+    - address: String
+    - cars: List<Car>
+
+    + CarOwner()
+    + CarOwner(name: String, address: String)
+    + setName(name: String): void
+    + setAddress(address: String): void
+    + getName(): String
+    + getAddress(): String
+    + addCar(car: Car): void
+    + removeCar(car: Car): void
+    + getCars(): List<Car>
+    + toString(): String
+}
+
+CarOwner "1" -- "0..*" Car
+@enduml

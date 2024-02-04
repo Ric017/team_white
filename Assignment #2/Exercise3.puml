@@ -33,4 +33,3 @@ class UserAccounts {
 Account "1" -- "8" UserAccounts : contains
 
 @enduml
-

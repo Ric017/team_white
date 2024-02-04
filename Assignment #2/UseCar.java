@@ -12,6 +12,7 @@ public class UseCar {
         CarOwner owner1 = new CarOwner("Trent Johnson", "711 Poplar Way", new ArrayList<Car>());
         CarOwner owner2 = new CarOwner("Brayden Bond", "456 Elm St", new ArrayList<Car>());
         CarOwner owner3 = new CarOwner("Eric Reyes", "789 Oak Ave", new ArrayList<Car>());
+        CarOwner owner4 = new CarOwner("Jordan Hawk", "555 Ashe Dr", new ArrayList<Car>());
         
         Car car1 = new Car("Honda", "Passport", 2022, 30000.00);
         Car car2 = new Car("Honda", "Pilot", 2013, 10000.00);
@@ -29,18 +30,15 @@ public class UseCar {
         // Set Eric Reyes as the owner of car4 and car5
         owner3.addCar(car4);
         owner3.addCar(car5);
-            
-        ArrayList<Car> cars = new ArrayList<Car>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
-        cars.add(car5);
+
+        // Trent sold his old car
+        owner1.removeCar(car2);
 
         ArrayList<CarOwner> owners = new ArrayList<CarOwner>();
         owners.add(owner1);
         owners.add(owner2);
         owners.add(owner3);
+        owners.add(owner4);
         
         // for each owner, for each car, print the car's information and the owner's information
         for (CarOwner owner : owners) {

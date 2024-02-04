@@ -1,3 +1,9 @@
+/*
+ * 9.7 The Account class
+ * 
+ * @author Team White
+ * @date 2024-02-03
+ */
 public class TestAccount {
     public static void main(String[] args) {
         Account account = new Account(1122, 20000, 4.5);

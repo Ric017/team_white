@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+
 /*
- * Demonstarates the system’s cababilities and 
- * tests the methods in your classes. In this program, create an array list of cars and store in it at 
- * least three car objects. Display the contents of this array (produce a nicely formatted description 
- * of each car object such as car’s make, model, year, price, and the car’s owner information).
+ * Assignment 2, Exercise 2
+ * 
+ * @author Team White
+ * @date 2024-02-03
  */
 public class UseCar {
     

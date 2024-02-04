@@ -1,3 +1,13 @@
+/*
+ * Assignment 2, Exercise 2
+ * 
+ * Grading notes:
+ * It didn't feel appropriate to create setters for the make, model and year
+ * as those attributes should be immutable and defined only at the time of creation.
+ * 
+ * @author Team White
+ * @date 2024-02-03
+ */
 public class Car {
     private String make;
     private String model;

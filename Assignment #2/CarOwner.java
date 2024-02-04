@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/*
+ * Assignment 2, Exercise 2
+ * 
+ * @author Team White
+ * @date 2024-02-03
+ */
 public class CarOwner {
     private String name;
     private String address;

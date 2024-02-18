@@ -4,7 +4,7 @@
  * @author Team White
  * @date 2024-02-03
  */
-class Account {
+public class Account {
     private int id;
     private double balance;
     private double annualInterestRate;

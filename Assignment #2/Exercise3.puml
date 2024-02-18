@@ -1,0 +1,35 @@
+@startuml
+
+class Account {
+    - id: int
+    - balance: double
+    - annualInterestRate: double
+    - dateCreated: java.util.Date
+
+    + Account()
+    + Account(newId: int, initialBalance: double, initialInterestRate: double)
+    + getId(): int
+    + getBalance(): double
+    + getAnnualInterestRate(): double
+    + setId(newId: int): void
+    + setBalance(newBalance: double): void
+    + setAnnualInterestRate(newAnnualInterestRate: double): void
+    + getDateCreated(): java.util.Date
+    + getMonthlyInterestRate(): double
+    + getMonthlyInterest(): double
+    + withdraw(amount: double): void
+    + deposit(amount: double): void
+}
+
+class UserAccounts {
+    - input: java.util.Scanner
+    - accounts: Account[]
+
+    + UserAccounts()
+    + run(): void
+    + main(args: String[]): void
+}
+
+Account "1" -- "8" UserAccounts : contains
+
+@enduml

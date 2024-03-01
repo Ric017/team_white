@@ -5,10 +5,11 @@
  * 
  */
 class Customers {
+    private Integer id;
     private String name;
     private String address;
     private String phoneNumber;
-    private Integer[] accounts;
+    private Integer[] accounts; // @todo - is this really right?
     
     /*
      * Create a new customer
@@ -19,11 +20,21 @@ class Customers {
      * 
      * @return void
      */
-    public Customers(String name, String address, String phoneNumber) {
+    public Customers(Integer id, String name, String address, String phoneNumber) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.accounts = new Account[999];
+        this.accounts = new Account[999]; // @todo - is there a way to not use a defined array length?
+    }
+
+    /*
+     * Get the customer's ID
+     *
+     * @return this customer's ID
+     */
+    public Integer getId() {
+        return this.id;
     }
     
     /*
@@ -110,4 +121,6 @@ class Customers {
             }
         }
     }
+
+    // @todo removeAccount()...
 }

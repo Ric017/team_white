@@ -5,6 +5,7 @@ public class Account {
     private Integer accountNumber;
     private Float balance;
     private Date dateOpened;
+    private String branch; // @todo - do we want the branch to be tracked as an attribute here? Or, should there be a separate class?
 
     /*
      * Create a new account

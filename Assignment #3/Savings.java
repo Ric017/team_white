@@ -3,6 +3,10 @@ import java.util.Date;
 public final class Savings extends Account {
     private Float interestRate;
 
+    // @todo - getInterestRate()...
+
+    // @todo - setInterestRate()...
+
     /*
      * Create a new savings account
      * 

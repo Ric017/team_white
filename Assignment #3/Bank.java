@@ -12,7 +12,12 @@ the information
 
 */
 
+import java.util.Date;
+
 class Bank {
+    // Our bank's policy is that the minimum balance is always $25.00
+    private bankPolicyMinimumCheckingBalance = 25.00;
+
     public static void main() {
         ArrayList<Customers> customers = new ArrayList<Customers>();
         ArrayList<Account> accounts = new ArrayList<Account>();
@@ -21,7 +26,7 @@ class Bank {
         System.out.println("Main menu");
         System.out.println("1: Create customer");
         System.out.println("2: Work with an existing customer");
-        System.out.println("3: Exit the main menu");
+        System.out.println("3: Exit");
         System.out.print("Enter a choice: ");
         int mainMenuSelection = input.nextInt();
 
@@ -32,30 +37,40 @@ class Bank {
                 System.out.println("Enter the customer ID:");
                 int customerId = input.nextInt();
 
-                Customer selectedCustomer = this.getCustomerById(customerId);
+                Customers selectedCustomer = this.getCustomerById(customers, customerId);
 
                 System.out.println("A: Create checking account");
                 System.out.println("B: Create savings account");
                 System.out.println("C: Work with an existing account");
-                System.out.println("E: Deposit to savings account");
+                System.out.println("D: Exit");
 
                 String customerMenuSelection = input.nextln();
                 switch(customerMenuSelection) {
                     case "A":
                         break;
                     case "B":
+                        this.createSavings(selectedCustomer);
                         break;
                     case "C":
                         System.out.println("Enter the account number:");
                         int accountNumber = input.nextInt();
 
-                        Customer selectedCustomer = this.getCustomerById(customerId);
+                        Account selectedAccount = this.getAccountByNumber(accounts, accountNumber);
+
+                        System.out.println("A: Display account details");
+                        System.out.println("B: Deposit to the account");
+                        System.out.println("C: Withdraw from the account");
+                        System.out.println("E: Exit");
+                        break;
+                    case "D":
+                        System.out.println("Thank you for using our app.");
                         break;
                     default:
                         System.out.println("Invalid choice.");
                 }
                 break;
             case 3:
+                System.out.println("Thank you for using our app.");
                 break;
             default:
                 System.out.println("Invalid choice");
@@ -67,25 +82,50 @@ class Bank {
     }
 
     // Loop through all customers to find the customer with the given ID
-    public static Customer getCustomerById(ArrayList<Customers>, Integer id) {
+    public static Customers getCustomerById(ArrayList<Customers>, Integer id) {
 
         // @todo - return Customer
     }
 
     // Loop through all accounts to find the account with the given account number
-    public static Account getAccountById(ArrayList<Accounts>, Integer accountNumber) {
+    public static Account getAccountByNumber(ArrayList<Accounts>, Integer accountNumber) {
+
+        // @todo = return Account
+    }
+
+    public static Customers createCustomer() {
 
     }
 
-    public static Customer createCustomer() {
+    public static Checking createChecking(Customers customer) {
+        System.out.println("Enter an account number:");
+        int newCheckingAccountNumber = input.nextInt();
 
+        System.out.println("Enter the starting balance:");
+        Float newCheckingBalance = input.nextFloat();
+
+        System.out.println("Enter the check style:");
+        String newCheckingCheckStyle = input.nextln();
+
+        Float newCheckingMinimumBalance = this.bankPolicyMinimumCheckingBalance;
+
+        Customers.addAcount(newCheckingAccountNumber);
+
+        return new Checking(newCheckingAccountNumber, newCheckingBalance, newCheckingCheckStyle, newCheckingMinimumBalance);
     }
 
-    public static Checking createChecking(Customer customer) {
+    public static Savings createSavings(Customers customer) {
+        System.out.println("Enter an account number:");
+        int newSavingsAccountNumber = input.nextInt();
 
-    }
+        System.out.println("Enter the starting balance:");
+        Float newSavingsBalance = input.nextFloat();
 
-    public static Savings createSavings(Customer customer) {
+        System.out.println("Enter the interest rate:");
+        Float newSavingsInterestRate = input.nextFloat();
 
+        Customers.addAcount(newSavingsAccountNumber);
+
+        return new Savings(newSavingsAccountNumber, newSavingsBalance, newSavingsInterestRate);
     }
 }

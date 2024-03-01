@@ -19,7 +19,7 @@ public class Account {
     public Account(Integer accountNumber, Float balance, Date dateOpened) {
         this.accountNumber = accountNumber;
         this.balance = balance;
-        this.dateOpened = dateOpened;
+        this.dateOpened = new java.util.Date();
     }
 
     /*

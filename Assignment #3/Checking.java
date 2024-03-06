@@ -2,7 +2,7 @@ import java.util.Date;
 
 public final class Checking extends Account {
     private String checkStyle;
-    private Float minimumBalance;
+    private Double minimumBalance;
 
     /*
      * Create a new checking account
@@ -12,11 +12,12 @@ public final class Checking extends Account {
      * @param dateOpened the date the account was opened
      * @param checkStyle the style of checks that can be used with this account
      * @param minimumBalance the minimum balance required
+     * @param branch the branch where the account was opened
      * 
      * @return void
      */
-    public Checking(Integer accountNumber, Float balance, Date dateOpened, String checkStyle, Float minimumBalance) {
-        super(accountNumber, balance, dateOpened);
+    public Checking(Integer accountNumber, Double balance, Date dateOpened, String checkStyle, Double minimumBalance, String branch) {
+        super(accountNumber, balance, dateOpened, branch);
         this.checkStyle = checkStyle;
         this.minimumBalance = minimumBalance;
     }
@@ -48,7 +49,7 @@ public final class Checking extends Account {
      * 
      * @return void
      */
-    public void setMinimumBalance(Float minimumBalance) {
+    public void setMinimumBalance(Double minimumBalance) {
         this.minimumBalance = minimumBalance;
     }
 
@@ -57,7 +58,7 @@ public final class Checking extends Account {
      * 
      * @return the minimum balance required
      */
-    public Float getMinimumBalance() {
+    public Double getMinimumBalance() {
         return this.minimumBalance;
     }
 }

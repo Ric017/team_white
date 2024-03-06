@@ -1,131 +1,94 @@
 /*
 
-Create a simple test program. The name of this test program is Bank.java, it should make 
-use of the above classes. Bank.java should declare an ArrayList to hold all kinds of bank 
-accounts. The test program should utilize the system capabilities; The following are 
-sample operations that demonstrate the systems capabilities: a. Create a Checking account for a commercial customer in Chicago’s branch and 
-add it to the array list b. Create a separate method to display the customer information and account 
-balance. Call the method on behalf of the customer you created in the previous 
-step. c. Deposit a $100 into the account you created in ‘a’, and then display the new info. d. Create a Savings account for an individual customer in some branch with initial 
-balance of $100 and interest rate of 10% and add it to the array list. e. Display the savings account information f. Make a $100 deposit to the savings account, calculate the interest, then display 
-the information 
+Create a simple test program. The name of this test program is Bank.java, and it should make use of the above classes.
+
+Bank.java should declare an ArrayList to hold all kinds of bank accounts.
+
+The test program should utilize the system capabilities; The following are sample operations that demonstrate the systems capabilities:
+  a. Create a Checking account for a commercial customer in Chicago’s branch and add it to the array list
+  b. Create a separate method to display the customer information and account balance. Call the method on behalf of the customer you created in the previous step.
+  c. Deposit a $100 into the account you created in ‘a’, and then display the new info.
+  d. Create a Savings account for an individual customer in some branch with initial balance of $100 and interest rate of 10% and add it to the array list.
+  e. Display the savings account information f. Make a $100 deposit to the savings account, calculate the interest, then display the information 
 
 */
 
 import java.util.Date;
+import java.util.ArrayList;
 
 class Bank {
-    // Our bank's policy is that the minimum balance is always $25.00
-    private bankPolicyMinimumCheckingBalance = 25.00;
 
     public static void main() {
         ArrayList<Customers> customers = new ArrayList<Customers>();
-        ArrayList<Account> accounts = new ArrayList<Account>();
-        Checking checking = new Checking(123, 100.0, new Date(), "style", 50.0);
 
-        System.out.println("Main menu");
-        System.out.println("1: Create customer");
-        System.out.println("2: Work with an existing customer");
-        System.out.println("3: Exit");
-        System.out.print("Enter a choice: ");
-        int mainMenuSelection = input.nextInt();
+        // Create a Checking account for a commercial customer in Chicago’s branch and add it to the array list
+        CommercialCustomer commercialCustomer = new CommercialCustomer(
+            1,
+            "Acme Inc.",
+            "123 Main St.",
+            "555-123-4567",
+            100,
+            "John Doe",
+            "987-654-3210"
+        );
 
-        switch (mainMenuSelection) {
-            case 1:
-                break;
-            case 2:
-                System.out.println("Enter the customer ID:");
-                int customerId = input.nextInt();
+        Checking checking = new Checking(
+            1,
+            100.00,
+            new Date(),
+            "Standard",
+            25.00,
+            "Chicago"
+        );
 
-                Customers selectedCustomer = this.getCustomerById(customers, customerId);
+        commercialCustomer.addAccount(checking);
 
-                System.out.println("A: Create checking account");
-                System.out.println("B: Create savings account");
-                System.out.println("C: Work with an existing account");
-                System.out.println("D: Exit");
+        customers.add(commercialCustomer);
 
-                String customerMenuSelection = input.nextln();
-                switch(customerMenuSelection) {
-                    case "A":
-                        break;
-                    case "B":
-                        this.createSavings(selectedCustomer);
-                        break;
-                    case "C":
-                        System.out.println("Enter the account number:");
-                        int accountNumber = input.nextInt();
+        // Create a separate method to display the customer information and account balance. Call the method on behalf of the customer you created in the previous step.
+        displayCustomerInfoAndAccountBalance(customers.get(0));
 
-                        Account selectedAccount = this.getAccountByNumber(accounts, accountNumber);
+        // Deposit a $100 into the account you created in ‘a’, and then display the new info.
+        customers.get(0).getAccounts().get(0).makeDeposit(100.00);
 
-                        System.out.println("A: Display account details");
-                        System.out.println("B: Deposit to the account");
-                        System.out.println("C: Withdraw from the account");
-                        System.out.println("E: Exit");
-                        break;
-                    case "D":
-                        System.out.println("Thank you for using our app.");
-                        break;
-                    default:
-                        System.out.println("Invalid choice.");
-                }
-                break;
-            case 3:
-                System.out.println("Thank you for using our app.");
-                break;
-            default:
-                System.out.println("Invalid choice");
+        displayCustomerInfoAndAccountBalance(customers.get(0));
+
+        // Create a Savings account for an individual customer in some branch with initial balance of $100 and interest rate of 10% and add it to the array list.
+        PersonalCustomer individualCustomer = new PersonalCustomer(
+            2,
+            "Jane Doe",
+            "456 Elm St.",
+            "555-987-4432",
+            "555-987-2321",
+            "555-987-4432"
+        );
+
+        Savings savings = new Savings(
+            2,
+            100.00,
+            new Date(),
+            0.10f,
+            "New York"
+        );
+
+        individualCustomer.addAccount(savings);
+
+        customers.add(individualCustomer);
+
+        // Display the savings account information
+        displayCustomerInfoAndAccountBalance(customers.get(1));
+    }
+
+    public static void displayCustomerInfoAndAccountBalance(Customers customer) {
+        System.out.println("Customer: " + customer.getName());
+        System.out.println("Address: " + customer.getAddress());
+        System.out.println("Phone: " + customer.getPhoneNumber());
+        
+        // Loop through the customer's accounts and display the account number and balance
+        for (Account account : customer.getAccounts()) {
+            System.out.println("Account Number: " + account.getAccountNumber());
+            System.out.println("Branch: " + account.getBranch());
+            System.out.println("Balance: " + account.getBalance());
         }
-
-        if (choice == 3) {
-            break;
-        }
-    }
-
-    // Loop through all customers to find the customer with the given ID
-    public static Customers getCustomerById(ArrayList<Customers>, Integer id) {
-
-        // @todo - return Customer
-    }
-
-    // Loop through all accounts to find the account with the given account number
-    public static Account getAccountByNumber(ArrayList<Accounts>, Integer accountNumber) {
-
-        // @todo = return Account
-    }
-
-    public static Customers createCustomer() {
-
-    }
-
-    public static Checking createChecking(Customers customer) {
-        System.out.println("Enter an account number:");
-        int newCheckingAccountNumber = input.nextInt();
-
-        System.out.println("Enter the starting balance:");
-        Float newCheckingBalance = input.nextFloat();
-
-        System.out.println("Enter the check style:");
-        String newCheckingCheckStyle = input.nextln();
-
-        Float newCheckingMinimumBalance = this.bankPolicyMinimumCheckingBalance;
-
-        Customers.addAcount(newCheckingAccountNumber);
-
-        return new Checking(newCheckingAccountNumber, newCheckingBalance, newCheckingCheckStyle, newCheckingMinimumBalance);
-    }
-
-    public static Savings createSavings(Customers customer) {
-        System.out.println("Enter an account number:");
-        int newSavingsAccountNumber = input.nextInt();
-
-        System.out.println("Enter the starting balance:");
-        Float newSavingsBalance = input.nextFloat();
-
-        System.out.println("Enter the interest rate:");
-        Float newSavingsInterestRate = input.nextFloat();
-
-        Customers.addAcount(newSavingsAccountNumber);
-
-        return new Savings(newSavingsAccountNumber, newSavingsBalance, newSavingsInterestRate);
     }
 }

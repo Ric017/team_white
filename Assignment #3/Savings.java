@@ -14,11 +14,12 @@ public final class Savings extends Account {
      * @param balance the initial balance
      * @param dateOpened the date the account was opened
      * @param interestRate the interest rate
+     * @param branch the branch where the account was opened
      * 
      * @return void
      */
-    public Savings(Integer accountNumber, Float balance, Date dateOpened, Float interestRate) {
-        super(accountNumber, balance, dateOpened);
+    public Savings(Integer accountNumber, Double balance, Date dateOpened, Float interestRate, String branch) {
+        super(accountNumber, balance, dateOpened, branch);
         this.interestRate = interestRate;
     }
 

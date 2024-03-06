@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
  * Customers Class
  * All customers have a name, an address, and a phone number. In 
@@ -9,7 +11,7 @@ class Customers {
     private String name;
     private String address;
     private String phoneNumber;
-    private Integer[] accounts; // @todo - is this really right?
+    private ArrayList<Account> accounts;
     
     /*
      * Create a new customer
@@ -25,7 +27,6 @@ class Customers {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.accounts = new Account[999]; // @todo - is there a way to not use a defined array length?
     }
 
     /*
@@ -69,7 +70,7 @@ class Customers {
      * 
      * @return the customer's list of accounts
      */
-    public Account[] getAccounts() {
+    public ArrayList<Account> getAccounts() {
         return this.accounts;
     }
 
@@ -113,14 +114,18 @@ class Customers {
      * 
      * @return void
      */
-    public void addAccount(Integer account) {
-        for (int i = 0; i < this.accounts.length; i++) {
-            if (this.accounts[i] == null) {
-                this.accounts[i] = account;
-                break;
-            }
-        }
+    public void addAccount(Account account) {
+        this.accounts.add(account);
     }
 
-    // @todo removeAccount()...
+    /*
+     * Remove an account from the customer's list of accounts
+     *
+     * @param account the account to remove
+     * 
+     * @return void
+     */
+    public void removeAccount(Account account) {
+        this.accounts.remove(account);
+    }
 }

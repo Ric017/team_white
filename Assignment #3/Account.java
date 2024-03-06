@@ -3,9 +3,9 @@ import java.util.Date;
 
 public class Account {
     private Integer accountNumber;
-    private Float balance;
+    private Double balance;
     private Date dateOpened;
-    private String branch; // @todo - do we want the branch to be tracked as an attribute here? Or, should there be a separate class?
+    private String branch;
 
     /*
      * Create a new account
@@ -16,10 +16,11 @@ public class Account {
      * 
      * @return void
      */
-    public Account(Integer accountNumber, Float balance, Date dateOpened) {
+    public Account(Integer accountNumber, Double balance, Date dateOpened, String branch) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.dateOpened = new java.util.Date();
+        this.branch = branch;
     }
 
     /*
@@ -29,7 +30,7 @@ public class Account {
      * 
      * @return void
      */
-    public void makeDeposit(Float amount) {
+    public void makeDeposit(Double amount) {
         this.balance += amount;
     }
 
@@ -40,7 +41,7 @@ public class Account {
      * 
      * @return void
      */
-    public void makeWithdrawal(Float amount) {
+    public void makeWithdrawal(Double amount) {
         this.balance -= amount;
     }
 
@@ -58,7 +59,7 @@ public class Account {
      * 
      * @return the current balance
      */
-    public Float getBalance() {
+    public Double getBalance() {
         return this.balance;
     }
 
@@ -72,14 +73,34 @@ public class Account {
     }
 
     /*
+     * Get the branch
+     * 
+     * @return the branch
+     */
+    public String getBranch() {
+        return this.branch;
+    }
+
+    /*
      * Set the balance
      * 
      * @param balance the new balance
      * 
      * @return void
      */
-    public void setBalance(Float balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    /*
+     * Set the branch
+     * 
+     * @param branch the new branch
+     * 
+     * @return void
+     */
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     /*

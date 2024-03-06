@@ -1,4 +1,4 @@
-class PersonalCustomer extends Customers {
+class PersonalCustomer extends Customer {
     private String homePhone;
     private String workPhone;
 

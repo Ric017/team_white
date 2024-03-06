@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 class Bank {
 
-    public static void main() {
-        ArrayList<Customers> customers = new ArrayList<Customers>();
+    public static void main(String[] args) {
+        ArrayList<Customer> customers = new ArrayList<Customer>();
 
         // Create a Checking account for a commercial customer in Chicago’s branch and add it to the array list
         CommercialCustomer commercialCustomer = new CommercialCustomer(
@@ -79,7 +79,7 @@ class Bank {
         displayCustomerInfoAndAccountBalance(customers.get(1));
     }
 
-    public static void displayCustomerInfoAndAccountBalance(Customers customer) {
+    public static void displayCustomerInfoAndAccountBalance(Customer customer) {
         System.out.println("Customer: " + customer.getName());
         System.out.println("Address: " + customer.getAddress());
         System.out.println("Phone: " + customer.getPhoneNumber());

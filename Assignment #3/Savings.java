@@ -3,10 +3,6 @@ import java.util.Date;
 public final class Savings extends Account {
     private Float interestRate;
 
-    // @todo - getInterestRate()...
-
-    // @todo - setInterestRate()...
-
     /*
      * Create a new savings account
      * 
@@ -23,6 +19,26 @@ public final class Savings extends Account {
         this.interestRate = interestRate;
     }
 
+    /*
+     * Get the interest rate
+     * 
+     * @return the interest rate
+     */
+    public Float getInterestRate() {
+        return this.interestRate;
+    }
+
+    /*
+     * Set the interest rate
+     * 
+     * @param interestRate the interest rate
+     * 
+     * @return void
+     */
+    public void setInterestRate(Float interestRate) {
+        this.interestRate = interestRate;
+    }
+    
     /*
      * Use this account's current balance to calculate the interest earned for 
      * a given future date. We'll assume that the interest is compounded monthly

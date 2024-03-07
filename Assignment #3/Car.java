@@ -105,6 +105,7 @@ public class Car {
      * @return String
      */
     public String toString() {
-        return "Year: " + this.year + "\nMake: " + this.make + "\nModel: " + this.model + "\nVIN: " + this.vin;
+        String returnString = "*OWNER DETAILS*\n" + this.owner.toString() + "\n";
+        return returnString + "*CAR DETAILS*\nYear: " + this.year + "\nMake: " + this.make + "\nModel: " + this.model + "\nVIN: " + this.vin;
     }
 }

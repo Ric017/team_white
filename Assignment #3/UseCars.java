@@ -16,6 +16,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class UseCars {
 
+    /*
+     * Runs the program
+     * 
+     * @param String[] any arguments
+     * 
+     * @return void
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -39,12 +46,22 @@ public class UseCars {
         SedanCar sedanCar2 = createSedanCar(owner3);
         cars.add(sedanCar2);
 
-        System.out.println("Enter a VIN to search for: ");
+        System.out.println("\nEnter a VIN to search for:\n");
         String searchVin = input.nextLine();
 
         displayCarInfo(cars, searchVin);
+
+        System.out.println("\nDisplay information for all cars.\n");
+        System.out.println(cars);
+
+        input.close();
     }
 
+    /*
+     * Finds a car in a list of cars, based on vin, and displays that car's details
+     * 
+     * @return void
+     */
     public static void displayCarInfo(ArrayList<Car> cars, String vin) {
         boolean found = false;
         for (Car car : cars) {
@@ -59,6 +76,11 @@ public class UseCars {
         }
     }
 
+    /*
+     * Creates a car owner interactively
+     * 
+     * @return CarOwner
+     */
     public static CarOwner createCarOwner() {
         Scanner input = new Scanner(System.in);
 
@@ -71,6 +93,13 @@ public class UseCars {
         return new CarOwner(name, address);
     }
 
+    /*
+     * Creates a sports car interactively
+     * 
+     * @param CarOwner The owner of the sports car being created
+     * 
+     * @return SportsCar
+     */
     public static SportsCar createSportsCar(CarOwner owner) {
         Scanner input = new Scanner(System.in);
 
@@ -94,6 +123,13 @@ public class UseCars {
         return new SportsCar(make, model, year, vin, owner, raceStats);
     }
 
+    /*
+     * Creates a sedan interactively
+     * 
+     * @param CarOwner The owner of the sedan being created
+     * 
+     * @return SedanCar
+     */
     public static SedanCar createSedanCar(CarOwner owner) {
         Scanner input = new Scanner(System.in);
 

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /*
  * Assignment 2, Exercise 2
  * 

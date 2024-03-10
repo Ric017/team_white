@@ -43,14 +43,18 @@ public final class Savings extends Account {
      * Use this account's current balance to calculate the interest earned for 
      * a given future date. We'll assume that the interest is compounded monthly
      * 
-     * @param futureDate the date for which we want to calculate the interest
+     * @param int periods the number of compounding periods (months)
      * 
      * @return void
      */
-    public void calculateInterest(Date futureDate) {
-        // Calculate the number of months between the current date and the future date
-        long months = (futureDate.getTime() - this.getDateOpened().getTime()) / 1000 / 60 / 60 / 24 / 30;
-        // Print the amount of interest that will be earned by that future date
-        System.out.println("Interest earned by " + futureDate + ": " + (this.getBalance() * Math.pow(1 + this.interestRate / 12, months) - this.getBalance()));
+    public void calculateInterest(int periods) {
+        
+        Double interestEarned = this.getBalance() * Math.pow((1 + (this.interestRate / 12)), periods) - this.getBalance();
+
+        // Limit interestEarned to 2 decimal places
+        interestEarned = Math.round(interestEarned * 100.0) / 100.0;
+        System.out.println("\n\nBalance before interest: " + this.getBalance());
+        System.out.println("Interest earned after " + periods + " months: " + interestEarned);
+        System.out.println("Balance after interest: " + (this.getBalance() + interestEarned));
     }
 }

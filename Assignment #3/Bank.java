@@ -74,7 +74,7 @@ class Bank {
 
         Savings savings = new Savings(
             2,
-            10000.00,
+            100.00,
             new Date(),
             newYorkBranch,
             0.10f
@@ -84,13 +84,24 @@ class Bank {
 
         customers.add(individualCustomer);
 
+        // Make a $100 deposit to the savings account, calculate the interest, then display the information         
+        savings.makeDeposit(100.00);
+
+        // @note - We were not given a date or complete information about the "interest", so we're going to assume
+        // (a) - Interest is annualized at 10%
+        // (b) - The question intends to ask us to calculate the interest 1 year from today
+        // (c) - We are calculating interest over the now FULL value of the Savings account ($100 initial deposit + $100 subsequent deposit)
+        // (d) - Interest is compounded monthly (so month 1's interest will earn interest in month 2, and so on)
+        savings.calculateInterest(12);
+
         // Display the savings account information
         displaySavingsAccountInformation(savings);
 
-        System.out.println("\nJane Doe decided she wants a checking account, too. So we'll create one with $2,000 starting balance.");
+        // Implement other operations of your choice!
+        System.out.println("\nJane Doe decided she wants a checking account, too. So we'll create one with $200 starting balance.");
         Checking checking2 = new Checking(
             3,
-            2000.00,
+            200.00,
             new Date(),
             newYorkBranch,
 "goldfish",
@@ -99,8 +110,8 @@ class Bank {
 
         individualCustomer.addAccount(checking2);
 
-        System.out.println("\nJane Doe wants to transfer $5,000.00 from savings to checking so she can pay for tutoring at IU.");
-        moveMoneyBetweenAccounts(savings, checking2, 5000.00);
+        System.out.println("\nJane Doe wants to transfer $50.00 from savings to checking so she can pay for tutoring at IU.");
+        moveMoneyBetweenAccounts(savings, checking2, 50.00);
         displayCustomerInfoAndAccountBalance(individualCustomer);
     }
 

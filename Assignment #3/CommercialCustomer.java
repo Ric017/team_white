@@ -3,8 +3,8 @@ public class CommercialCustomer extends Customer {
     private String contactPerson;
     private String contactPersonPhoneNumber;
 
-    public CommercialCustomer(Integer id, String name, String address, String phoneNumber, Integer creditRating, String contactPerson, String contactPersonPhoneNumber) {
-        super(id, name, address, phoneNumber);
+    public CommercialCustomer(String name, String address, String phoneNumber, Integer creditRating, String contactPerson, String contactPersonPhoneNumber) {
+        super(name, address, phoneNumber);
         this.creditRating = creditRating;
         this.contactPerson = contactPerson;
         this.contactPersonPhoneNumber = contactPersonPhoneNumber;

@@ -5,7 +5,7 @@ public class Account {
     private Integer accountNumber;
     private Double balance;
     private Date dateOpened;
-    private String branch;
+    private Branch branch;
 
     /*
      * Create a new account
@@ -16,7 +16,7 @@ public class Account {
      * 
      * @return void
      */
-    public Account(Integer accountNumber, Double balance, Date dateOpened, String branch) {
+    public Account(Integer accountNumber, Double balance, Date dateOpened, Branch branch) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.dateOpened = new java.util.Date();
@@ -77,7 +77,7 @@ public class Account {
      * 
      * @return the branch
      */
-    public String getBranch() {
+    public Branch getBranch() {
         return this.branch;
     }
 
@@ -99,7 +99,7 @@ public class Account {
      * 
      * @return void
      */
-    public void setBranch(String branch) {
+    public void setBranch(Branch branch) {
         this.branch = branch;
     }
 

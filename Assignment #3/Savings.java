@@ -14,7 +14,7 @@ public final class Savings extends Account {
      * 
      * @return void
      */
-    public Savings(Integer accountNumber, Double balance, Date dateOpened, Float interestRate, String branch) {
+    public Savings(Integer accountNumber, Double balance, Date dateOpened, Branch branch, Float interestRate) {
         super(accountNumber, balance, dateOpened, branch);
         this.interestRate = interestRate;
     }

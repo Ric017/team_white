@@ -14,8 +14,8 @@ class PersonalCustomer extends Customer {
      * 
      * @return void
      */
-    public PersonalCustomer(int id, String name, String address, String phoneNumber, String homePhone, String workPhone) {
-        super(id, name, address, phoneNumber);
+    public PersonalCustomer(String name, String address, String phoneNumber, String homePhone, String workPhone) {
+        super(name, address, phoneNumber);
         this.homePhone = homePhone;
         this.workPhone = workPhone;
     }

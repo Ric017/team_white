@@ -16,7 +16,7 @@ public final class Checking extends Account {
      * 
      * @return void
      */
-    public Checking(Integer accountNumber, Double balance, Date dateOpened, String checkStyle, Double minimumBalance, String branch) {
+    public Checking(int accountNumber, Double balance, Date dateOpened, Branch branch, String checkStyle, Double minimumBalance) {
         super(accountNumber, balance, dateOpened, branch);
         this.checkStyle = checkStyle;
         this.minimumBalance = minimumBalance;

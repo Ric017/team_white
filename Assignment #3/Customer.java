@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * 
  */
 class Customer {
-    private Integer id;
     private String name;
     private String address;
     private String phoneNumber;
@@ -22,22 +21,11 @@ class Customer {
      * 
      * @return void
      */
-    public Customer(Integer id, String name, String address, String phoneNumber) {
-        this.id = id;
+    public Customer(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.accounts = new ArrayList<Account>(); // Initialize the accounts list
-    }
-    
-
-    /*
-     * Get the customer's ID
-     *
-     * @return this customer's ID
-     */
-    public Integer getId() {
-        return this.id;
     }
     
     /*

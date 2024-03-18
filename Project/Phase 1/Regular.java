@@ -1,0 +1,73 @@
+/**
+ * Represents a regular account with fixed interest and a monthly maintenance fee.
+ */
+public class Regular extends Account {
+    private static final double INTEREST_RATE = 0.06; // 6% interest rate
+    private static final double MAINTENANCE_FEE = 10.0;
+
+    /**
+     * Constructs a new Regular account with the specified details.
+     *
+     * @param accountNumber The account number for this regular account.
+     * @param balance       The initial balance of the account.
+     * @param customer      The customer who owns this account.
+     */
+    public Regular(String accountNumber, double balance, Customer customer) {
+        super(accountNumber, balance, customer);
+    }
+
+    /**
+     * Deposits the specified amount into the account. Interest is also applied.
+     *
+     * @param amount The amount to be deposited.
+     */
+    @Override
+    public void deposit(double amount) {
+        if (amount > 0) {
+            setBalance(getBalance() + amount);
+            applyInterest();
+        }
+    }
+
+    /**
+     * Withdraws the specified amount from the account if sufficient balance is available,
+     * considering the maintenance fee.
+     *
+     * @param amount The amount to be withdrawn.
+     */
+    @Override
+    public void withdraw(double amount) {
+        if (amount > 0 && getBalance() >= (amount + MAINTENANCE_FEE)) {
+            setBalance(getBalance() - amount);
+            chargeMaintenanceFee();
+        }
+    }
+
+    /**
+     * Applies the fixed interest rate to the account balance.
+     */
+    private void applyInterest() {
+        setBalance(getBalance() + (getBalance() * INTEREST_RATE));
+    }
+
+    /**
+     * Charges the maintenance fee on the account.
+     */
+    private void chargeMaintenanceFee() {
+        setBalance(getBalance() - MAINTENANCE_FEE);
+    }
+
+    /**
+     * Returns a string representation of the regular account.
+     *
+     * @return A string containing the account's details.
+     */
+    @Override
+    public String toString() {
+        return "Regular{" +
+                "accountNumber='" + getAccountNumber() + '\'' +
+                ", balance=" + getBalance() +
+                ", customer=" + getCustomer() +
+                '}';
+    }
+}

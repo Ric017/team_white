@@ -1,6 +1,6 @@
 public class Customer {
 
-    private Integer customerID;
+    private String customerID;
     private String name;
 
     /*
@@ -11,7 +11,7 @@ public class Customer {
      * 
      * @return void
      */
-    public Customer(Integer customerID, String name) {
+    public Customer(String customerID, String name) {
         this.customerID = customerID;
         this.name = name;
     }
@@ -21,7 +21,7 @@ public class Customer {
      * 
      * @return the customer's ID
      */
-    public Integer getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 

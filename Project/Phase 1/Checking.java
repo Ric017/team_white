@@ -2,8 +2,8 @@
  * Represents a checking account with transaction fees.
  */
 public class Checking extends Account {
-    private static final double TRANSACTION_FEE = 3.0;
-    private static final int FREE_TRANSACTIONS = 2;
+    private static final double transactionFee = 3.0;
+    private static final int freeTransactions = 2;
     private int transactionCount;
 
     /**
@@ -13,9 +13,16 @@ public class Checking extends Account {
      * @param balance       The initial balance of the account.
      * @param customer      The customer who owns this account.
      */
-    public Checking(String accountNumber, double balance, Customer customer) {
+    public Checking(int accountNumber, double balance, Customer customer) {
         super(accountNumber, balance, customer);
         this.transactionCount = 0;
+    }
+
+    /**
+     * Increments the transaction count for the account.
+     */
+    private void incrementTransactionCount() {
+        transactionCount++;
     }
 
     /**
@@ -46,12 +53,14 @@ public class Checking extends Account {
     }
 
     /**
-     * Increments the transaction count and applies a transaction fee if the free limit is exceeded.
+     * Modifies account balances at the end of the month
+     * by applying transaction fees as necessary.
      */
-    private void incrementTransactionCount() {
-        transactionCount++;
-        if (transactionCount > FREE_TRANSACTIONS) {
-            setBalance(getBalance() - TRANSACTION_FEE);
+    @Override
+    public void applyEndOfMonth() {
+        if (transactionCount > freeTransactions) {
+            setBalance(getBalance() - (transactionCount - freeTransactions) * transactionFee);
         }
+        transactionCount = 0;
     }
 }

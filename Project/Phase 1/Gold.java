@@ -2,7 +2,7 @@
  * Represents a gold account with fixed interest and special withdrawal features.
  */
 public class Gold extends Account {
-    private static final double INTEREST_RATE = 0.05; // 5% interest rate
+    private static final double interestRate = 0.05; // 5% interest rate
 
     /**
      * Constructs a new Gold account with the specified details.
@@ -11,7 +11,7 @@ public class Gold extends Account {
      * @param balance       The initial balance of the account.
      * @param customer      The customer who owns this account.
      */
-    public Gold(String accountNumber, double balance, Customer customer) {
+    public Gold(int accountNumber, double balance, Customer customer) {
         super(accountNumber, balance, customer);
     }
 
@@ -24,7 +24,6 @@ public class Gold extends Account {
     public void deposit(double amount) {
         if (amount > 0) {
             setBalance(getBalance() + amount);
-            applyInterest();
         }
     }
 
@@ -44,7 +43,7 @@ public class Gold extends Account {
      * Applies the fixed interest rate to the account balance.
      */
     private void applyInterest() {
-        setBalance(getBalance() + (getBalance() * INTEREST_RATE));
+        setBalance(getBalance() + (getBalance() * interestRate));
     }
 
     /**
@@ -59,5 +58,13 @@ public class Gold extends Account {
                 ", balance=" + getBalance() +
                 ", customer=" + getCustomer() +
                 '}';
+    }
+
+    /**
+     * Modifies account balances at the end of the month by applying interest.
+     */
+    @Override
+    public void applyEndOfMonth() {
+        applyInterest();
     }
 }

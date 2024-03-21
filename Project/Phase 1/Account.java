@@ -2,7 +2,7 @@
  * Represents a generic bank account.
  */
 public abstract class Account {
-    private String accountNumber;
+    private int accountNumber;
     private double balance;
     private Customer customer;
 
@@ -13,7 +13,7 @@ public abstract class Account {
      * @param balance       The initial balance of the account.
      * @param customer      The customer who owns this account.
      */
-    public Account(String accountNumber, double balance, Customer customer) {
+    public Account(int accountNumber, double balance, Customer customer) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.customer = customer;
@@ -22,9 +22,9 @@ public abstract class Account {
     /**
      * Gets the account number.
      *
-     * @return A string representing the account number.
+     * @return An integer representing the account number.
      */
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
@@ -33,7 +33,7 @@ public abstract class Account {
      *
      * @param accountNumber A string containing the new account number.
      */
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -72,6 +72,12 @@ public abstract class Account {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    /**
+     * Modifies account balances at the end of the month
+     * by applying interest or fees as necessary.
+     */
+    public abstract void applyEndOfMonth();
 
     /**
      * Deposits the specified amount into the account.

@@ -97,37 +97,37 @@ public class OperatorMenu {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for the customer name
-        System.out.println("Please input the customer name: ");
+        System.out.print("Please input the customer name: ");
         String customerName = scanner.nextLine();
 
         // Prompt for the customer ID
-        System.out.println("Please input the customer ID: ");
+        System.out.print("Please input the customer ID: ");
         String customerId = scanner.nextLine();
     
         // Prompt for the account number
-        System.out.println("Please input the account number: ");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
 
         // Create the account and add it to the list
         Customer customer = new Customer(customerId, customerName);
         Account account = new Checking(accountNumber, 0, customer);
         accounts.add(account);
-        System.out.println("Account created successfully!");
+        System.out.println("\nAccount created successfully!\n");
     }
 
     private static void createGoldAccount() {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for the customer name
-        System.out.println("Please input the customer name: ");
+        System.out.print("Please input the customer name: ");
         String customerName = scanner.nextLine();
 
         // Prompt for the customer ID
-        System.out.println("Please input the customer ID: ");
+        System.out.print("Please input the customer ID: ");
         String customerId = scanner.nextLine();
     
         // Prompt for the account number
-        System.out.println("Please input the account number: ");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
 
         // Create the account and add it to the list
@@ -141,15 +141,15 @@ public class OperatorMenu {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for the customer name
-        System.out.println("Please input the customer name: ");
+        System.out.print("Please input the customer name: ");
         String customerName = scanner.nextLine();
 
         // Prompt for the customer ID
-        System.out.println("Please input the customer ID: ");
+        System.out.print("Please input the customer ID: ");
         String customerId = scanner.nextLine();
     
         // Prompt for the account number
-        System.out.println("Please input the account number: ");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
 
         // Create the account and add it to the list
@@ -163,11 +163,11 @@ public class OperatorMenu {
         Scanner scanner = new Scanner(System.in);
     
         // Prompt for the account number
-        System.out.println("Please input the account number: ");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
     
         // Prompt for the deposit amount
-        System.out.println("Please input the amount: ");
+        System.out.print("Please input the amount: ");
         double amount = scanner.nextDouble();
     
         // Find the account and deposit the amount
@@ -182,20 +182,19 @@ public class OperatorMenu {
         }
     
         if (!accountFound) {
-            System.out.println("Account number not found!");
+            System.out.println("\nAccount number not found!");
         }
     }    
 
     private static void withdraw() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Withdrawing money:");
     
         // Prompt for the account number
-        System.out.println("Enter the account number:");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
     
         // Prompt for the withdrawal amount
-        System.out.println("Enter the amount to withdraw:");
+        System.out.print("Please enter the amount: ");
         double amount = scanner.nextDouble();
     
         // Find the account and attempt to withdraw the amount
@@ -203,28 +202,22 @@ public class OperatorMenu {
         for (Account account : accounts) {
             if (account.getAccountNumber() == accountNumber) {
                 accountFound = true;
-                // If it is a Gold account or the balance is sufficient, withdraw the amount
-                if (account instanceof Gold || account.getBalance() >= amount) {
-                    account.withdraw(amount);
-                    System.out.println("Account updated successfully!");
-                } else {
-                    System.out.println("Insufficient funds for withdrawal.");
-                }
+                account.withdraw(amount);
+                System.out.println("Account updated successfully!");
                 break;
             }
         }
     
         if (!accountFound) {
-            System.out.println("Account number not found!");
+            System.out.println("\nAccount number not found!");
         }
     }    
 
     private static void viewAccount() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Viewing account details:");
     
         // Prompt for the account number
-        System.out.println("Enter the account number:");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
     
         // Find the account and display its details
@@ -232,14 +225,14 @@ public class OperatorMenu {
         for (Account account : accounts) {
             if (account.getAccountNumber() == accountNumber) {
                 accountFound = true;
-                System.out.println("Details of account# " + accountNumber + " :");
+                System.out.println("\nDetails of account# " + accountNumber + " :");
                 System.out.println(account); // Assuming a meaningful toString() method in Account class
                 break;
             }
         }
     
         if (!accountFound) {
-            System.out.println("Account number not found!");
+            System.out.println("\nAccount number not found!");
         }
     }
 
@@ -247,7 +240,7 @@ public class OperatorMenu {
         Scanner scanner = new Scanner(System.in);
     
         // Prompt for the account number
-        System.out.println("Please input the account number: ");
+        System.out.print("Please input the account number: ");
         int accountNumber = scanner.nextInt();
     
         // Find the account and remove it
@@ -262,7 +255,7 @@ public class OperatorMenu {
         }
     
         if (!accountFound) {
-            System.out.println("Account number not found!");
+            System.out.println("\nAccount number not found!");
         }
     }
 
@@ -270,11 +263,17 @@ public class OperatorMenu {
         for (Account account : accounts) {
             account.applyEndOfMonth();
         }
-        System.out.println("End of month processing completed!");
+        System.out.println("\nEnd of month processing completed!");
     }
 
     // Method to display bank statistics
     private static void displayBankStatistics() {
+
+        if(accounts.size() == 0) {
+            System.out.println("\nThe bank has no accounts.\n");
+            return;
+        }
+
         double totalBalance = 0;
         int zeroBalanceAccounts = 0;
         double maxBalance = Double.MIN_VALUE;

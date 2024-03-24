@@ -74,6 +74,20 @@ public abstract class Account {
     }
 
     /**
+     * Prints the customer information and account balance
+     * 
+     * @return The string containing the summary information
+     */
+    public String toString() {
+        String str = "";
+        str += "Customer Id:  " + this.customer.getCustomerID() + "\n";
+        str += "Customer Name:" + this.customer.getName() + "\n";
+        str += "Balance:      " + this.balance + "\n";
+
+        return str;
+    }
+
+    /**
      * Modifies account balances at the end of the month
      * by applying interest or fees as necessary.
      */

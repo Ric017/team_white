@@ -17,35 +17,34 @@ public class Regular extends Account {
     }
 
     /**
-     * Deposits the specified amount into the account. Interest is also applied.
+     * Deposits the specified amount into the account.
      *
      * @param amount The amount to be deposited.
      */
     @Override
     public void deposit(double amount) {
-        if (amount > 0) {
-            setBalance(getBalance() + amount);
-        }
+        setBalance(getBalance() + amount);
     }
 
     /**
-     * Withdraws the specified amount from the account if sufficient balance is available,
-     * considering the maintenance fee.
+     * Withdraws the specified amount from the account and tracks the transaction
      *
-     * @param amount The amount to be withdrawn.
+     * @param amount The amount to be deposited.
      */
     @Override
     public void withdraw(double amount) {
-        if (amount > 0 && getBalance() >= (amount + maintenanceFee)) {
-            setBalance(getBalance() - amount);
+        if(amount > getBalance()) {
+            amount = getBalance();
         }
+
+        setBalance(getBalance() - amount);
     }
 
     /**
      * Applies the fixed interest rate to the account balance.
      */
     private void applyInterest() {
-        setBalance(getBalance() + (getBalance() * interestRate));
+        setBalance(getBalance() + (getBalance() * (interestRate / 12)));
     }
 
     /**
@@ -56,25 +55,12 @@ public class Regular extends Account {
     }
 
     /**
-     * Returns a string representation of the regular account.
-     *
-     * @return A string containing the account's details.
-     */
-    @Override
-    public String toString() {
-        return "Regular{" +
-                "accountNumber='" + getAccountNumber() + '\'' +
-                ", balance=" + getBalance() +
-                ", customer=" + getCustomer() +
-                '}';
-    }
-
-    /**
      * Modifies account balances at the end of the month by applying interest and maintenance fees.
      */
     @Override
     public void applyEndOfMonth() {
-        applyInterest();
+        // @note: Our bank charges maintenance fees first so that we can reduce our interest payout requirements (we are greedy)
         chargeMaintenanceFee();
+        applyInterest();
     }
 }

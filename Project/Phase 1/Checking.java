@@ -26,30 +26,30 @@ public class Checking extends Account {
     }
 
     /**
-     * Deposits the specified amount into the account and applies a transaction fee if necessary.
+     * Deposits the specified amount into the account and tracks the transaction
+     * 
      *
      * @param amount The amount to be deposited.
      */
     @Override
     public void deposit(double amount) {
-        if (amount > 0) {
-            setBalance(getBalance() + amount);
-            incrementTransactionCount();
-        }
+        setBalance(getBalance() + amount);
+        incrementTransactionCount();
     }
 
     /**
-     * Withdraws the specified amount from the account if the balance is sufficient,
-     * considering the transaction fee if necessary.
+     * Withdraws the specified amount from the account and tracks the transaction
      *
-     * @param amount The amount to be withdrawn.
+     * @param amount The amount to be deposited.
      */
     @Override
     public void withdraw(double amount) {
-        if (amount > 0 && getBalance() >= amount) {
-            setBalance(getBalance() - amount);
-            incrementTransactionCount();
+        if(amount > getBalance()) {
+            amount = getBalance();
         }
+
+        setBalance(getBalance() - amount);
+        incrementTransactionCount();
     }
 
     /**

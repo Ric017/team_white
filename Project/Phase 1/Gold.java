@@ -2,6 +2,7 @@
  * Represents a gold account with fixed interest and special withdrawal features.
  */
 public class Gold extends Account {
+    // @note: With respect to the interest rate, we assume this is the ANNUAL interest rate
     private static final double interestRate = 0.05; // 5% interest rate
 
     /**
@@ -16,48 +17,30 @@ public class Gold extends Account {
     }
 
     /**
-     * Deposits the specified amount into the account. Interest is also applied.
+     * Deposits the specified amount into the account.
      *
      * @param amount The amount to be deposited.
      */
     @Override
     public void deposit(double amount) {
-        if (amount > 0) {
-            setBalance(getBalance() + amount);
-        }
+        setBalance(getBalance() + amount);
     }
 
     /**
-     * Withdraws the specified amount from the account, even if it exceeds the current balance.
+     * Withdraws the specified amount from the account and tracks the transaction
      *
-     * @param amount The amount to be withdrawn.
+     * @param amount The amount to be deposited.
      */
     @Override
     public void withdraw(double amount) {
-        if (amount > 0) {
-            setBalance(getBalance() - amount); // Gold accounts allow overdrafts.
-        }
+        setBalance(getBalance() - amount);
     }
 
     /**
      * Applies the fixed interest rate to the account balance.
      */
     private void applyInterest() {
-        setBalance(getBalance() + (getBalance() * interestRate));
-    }
-
-    /**
-     * Returns a string representation of the gold account.
-     *
-     * @return A string containing the account's details.
-     */
-    @Override
-    public String toString() {
-        return "Gold{" +
-                "accountNumber='" + getAccountNumber() + '\'' +
-                ", balance=" + getBalance() +
-                ", customer=" + getCustomer() +
-                '}';
+        setBalance(getBalance() + (getBalance() * (interestRate / 12)));
     }
 
     /**

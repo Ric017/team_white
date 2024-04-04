@@ -36,61 +36,7 @@ public class ArrayStringLog implements StringLogInterface {
     log[lastIndex] = element;
   }
 
-  public boolean isFull()
-  // Returns true if this StringLog is full, otherwise returns false.
-  {
-    if (lastIndex == (log.length - 1))
-      return true;
-    else
-      return false;
-  }
-
-  public int size()
-  // Returns the number of Strings in this StringLog.
-  {
-    return (lastIndex + 1);
-  }
-
-  public boolean contains(String element)
-  // Returns true if element is in this StringLog,
-  // otherwise returns false.
-  // Ignores case differences when doing string comparison.
-  {
-    int location = 0;
-    while (location <= lastIndex)
-    {
-      if (element.equalsIgnoreCase(log[location]))  // if they match
-        return true;
-      else
-        location++;
-    }
-   return false;
-  }
-
-  public void clear()
-  // Makes this StringLog empty.
-  {
-    for (int i = 0; i <= lastIndex; i++)
-      log[i] = null;
-    lastIndex = -1;
-  }
-
-  public String getName()
-  // Returns the name of this StringLog.
-  {
-    return name;
-  }
-
-  public String toString()
-  // Returns a nicely formatted string representing this StringLog.
-  {
-    String logString = "Log: " + name + "\n\n";
-
-    for (int i = 0; i <= lastIndex; i++)
-      logString = logString + (i+1) + ". " + log[i] + "\n";
-
-    return logString;
-  }
+  // START REVIEWING HERE
 
   /*
    * The method returns true if the log is empty and false otherwise
@@ -171,5 +117,63 @@ public class ArrayStringLog implements StringLogInterface {
       count++;
     }
     return count;
+  }
+
+  // END REVIEWING HERE
+
+  public boolean isFull()
+  // Returns true if this StringLog is full, otherwise returns false.
+  {
+    if (lastIndex == (log.length - 1))
+      return true;
+    else
+      return false;
+  }
+
+  public int size()
+  // Returns the number of Strings in this StringLog.
+  {
+    return (lastIndex + 1);
+  }
+
+  public boolean contains(String element)
+  // Returns true if element is in this StringLog,
+  // otherwise returns false.
+  // Ignores case differences when doing string comparison.
+  {
+    int location = 0;
+    while (location <= lastIndex)
+    {
+      if (element.equalsIgnoreCase(log[location]))  // if they match
+        return true;
+      else
+        location++;
+    }
+   return false;
+  }
+
+  public void clear()
+  // Makes this StringLog empty.
+  {
+    for (int i = 0; i <= lastIndex; i++)
+      log[i] = null;
+    lastIndex = -1;
+  }
+
+  public String getName()
+  // Returns the name of this StringLog.
+  {
+    return name;
+  }
+
+  public String toString()
+  // Returns a nicely formatted string representing this StringLog.
+  {
+    String logString = "Log: " + name + "\n\n";
+
+    for (int i = 0; i <= lastIndex; i++)
+      logString = logString + (i+1) + ". " + log[i] + "\n";
+
+    return logString;
   }
 }

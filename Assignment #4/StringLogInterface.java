@@ -14,6 +14,16 @@ public interface StringLogInterface
   //
   // Places element into this StringLog.
 
+  boolean isEmpty();
+
+  int howMany(String element);
+
+  boolean uniqueInsert(String element);
+
+  boolean delete(String element);
+
+  int deleteAll(String element);
+
   boolean isFull();
   // Returns true if this StringLog is full, otherwise returns false.
 

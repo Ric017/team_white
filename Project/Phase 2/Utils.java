@@ -1,14 +1,17 @@
-public class Utils {
-    private int nextAccountNumber = 1000;
+package Phase2;
 
-    /**
-     * Gets the next account number.
-     * 
-     * @return The next account number.
-     */
+public class Utils {
+    private static Utils instance = null;
+    private int nextAccountNumber = 1000; // Initial account number
+
+    public static Utils getInstance() {
+        if (instance == null) {
+            instance = new Utils();
+        }
+        return instance;
+    }
+
     public int getNextAccountNumber() {
-        int returnValue = nextAccountNumber;
-        nextAccountNumber++;
-        return returnValue;
+        return nextAccountNumber++; // Ensure this is incrementing properly
     }
 }

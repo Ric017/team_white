@@ -1,3 +1,4 @@
+package Phase2;
 /*
  * You will write a Java application to simulate a simple (unrealistic) bank system. This 
  * bank supports three different kinds of accounts: Checking, Gold, and Regular. 
@@ -160,7 +161,7 @@ public class BankApp extends Application {
                                   .findFirst()
                                   .orElse(null);
         if (account != null) {
-            outputArea.setText("Account #" + accountNumber + ": " + account.toString());
+            outputArea.setText(account.toString());
         } else {
             outputArea.setText("Account not found");
         }
@@ -193,6 +194,10 @@ public class BankApp extends Application {
                                               .map(Account::getAccountNumber)
                                               .orElse(-1);
 
-        outputArea.setText("Total balance: $" + totalBalance + "\nZero balance accounts: " + zeroBalanceAccounts + "\nHighest balance account: #" + maxBalanceAccountNumber + " ($" + maxBalance + ")");
+        outputArea.setText(
+        		"Total balance: $" + totalBalance + "\n" + 
+        		"Zero balance accounts: " + zeroBalanceAccounts + "\n" +
+        		"Number of accounts: " + accounts.size() + "\n" +
+        		"Highest balance account: #" + maxBalanceAccountNumber + " : $" + maxBalance + "");
     }
 }

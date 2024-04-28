@@ -1,3 +1,5 @@
+package Phase2;
+
 public class Customer {
 
     private String customerID;
@@ -43,5 +45,10 @@ public class Customer {
      */
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String toString() {
+    	return 	"Customer name: " + getName() + "\n" +
+    			"Customer ID: " + getCustomerID();
     }
 }

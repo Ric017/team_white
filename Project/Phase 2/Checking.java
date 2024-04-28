@@ -1,3 +1,5 @@
+package Phase2;
+
 /**
  * Represents a checking account with transaction fees.
  */
